@@ -12,9 +12,10 @@ class palsquare {
     PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("palsquare.out")));
     int b = Integer.parseInt(f.readLine());
     for(int i = 1;i <= 300;i++){
-      String format = Integer.toString(i*i, b);
+      String num = Integer.toString(i,b).toUpperCase();
+      String format = Integer.toString(i*i, b).toUpperCase();
       if(isPalindrome(format))
-        out.println(i + " " +format);
+        out.println(num + " " +format);
     }
     out.close();
     System.exit(0);
