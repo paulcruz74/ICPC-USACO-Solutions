@@ -11,21 +11,23 @@ public class A {
     }
   }
   public static long solve(String s) {
-    Set<Integer> idx = new HashSet<>();
-    for(int i = 0;i < s.length() - 1;i++) {
-      if (Integer.parseInt(s.substring(i, i+2)) <= 26) {
-        idx.add(i);
-      }
-    }
     long[] f = new long[s.length()+1];
     f[s.length()] = 1;
-    f[s.length() - 1] = 1;
+    if (Integer.parseInt(s.substring(s.length()-1)) != 0) {
+      f[s.length() - 1] = 1;
+    }
+    else {
+      f[s.length() - 1] = 0;
+    }
     for(int i = s.length() - 2;i >= 0;i--){
-      if (idx.contains(i)) {
-        f[i] = f[i+1]+f[i+2];
+      int a = Integer.parseInt(s.substring(i, i+2));
+      int b = a/10;
+      int c = a%10;
+      if (a <= 26 && a >= 10) {
+        f[i] += f[i+2];
       }
-      else{
-        f[i] = f[i+1];
+      if (c != 0 && b != 0) {
+        f[i] += f[i+1];
       }
     }
     return f[0];
