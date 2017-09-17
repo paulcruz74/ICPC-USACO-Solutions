@@ -4,67 +4,67 @@ import java.util.*;
 public class F {
   public static void main(String [] args) {
     Scanner in = new Scanner(System.in);
+    Set<Integer> uws = new TreeSet<>();
+    uws.add(0);
     int n = in.nextInt();
-    int[][] weights = new int[2][n];
-    Set<Integer> uniqueWeights = new HashSet<>();
-    Map<Integer, Integer> weightToRow = new HashMap<>();
-    for (int i = 0;i < 2;i++) {
-      for (int j = 0;j < n;j++) {
-        weights[i][j] = in.nextInt();
-        uniqueWeights.add(weights[i][j]);
-        weightToRow.put(weights[i][j], weightToRow.getOrDefault(weights[i][j], 0) | (i + 1));
-      }
-    }
-    Set<Integer> diffRows = new HashSet<>();
-    int max = 0;
-    for (int i : uniqueWeights) {
-      int count = 0;
-      for (int j = 0;j < n;j++) {
-        if (weights[0][j] == i) {
-          count++;
-        }
-      }
-      if (count % 2 == 1) {
-        max = Math.max(max, i);
-        diffRows.add(i);
-      }
-    }
-    int[][] w = new int[2][n - diffRows.size()];
+    int[][] w = new int[2][n];
     for(int i = 0;i < 2;i++) {
-      int next = 0;
       for(int j = 0;j < n;j++) {
-        if (!diffRows.contains(weights[i][j])) {
-          w[i][next++] = weights[i][j];
-        }
+        w[i][j] = in.nextInt();
+        uws.add(w[i][j]);
       }
     }
-    // System.out.println(Arrays.toString(w[0]));
-    // System.out.println(Arrays.toString(w[1]));
-    // System.out.println(weightToRow);
-    for(int i : uniqueWeights) {
-      if (diffRows.contains(i)) {
-        continue;
-      }
-      else {
-        int row = weightToRow.get(i);
-        int inst = 0;
-        int[] idx = new int[2];
-        int[] rowWeights = w[row-1];
-        for(int j = 0;j < rowWeights.length;j++) {
-          if(rowWeights[j] == i) {
-            idx[inst++] = j;
-          }
-        }
-
-        for(int j = idx[0];j <= idx[1];j++) {
-          if (rowWeights[j] != -1 && rowWeights[j] != i) {
-            max = Math.max(max, i);
-          }
-        }
-        rowWeights[idx[0]] = -1;
-        rowWeights[idx[1]] = -1;
-      }
+    List<Integer> uw = new ArrayList<>();
+    for(int i : uws) {
+      uw.add(i);
+    }
+    Collections.sort(uw);
+    System.out.println(binarySearch(uw, w));
+  }
+  public static int binarySearch(List<Integer> uw, int[][] w) {
+    return binarySearch(uw, w, 0, uw.size()-1);  
+  }
+  public static int binarySearch(List<Integer> uw, int[][] w, int left, int right) {
+    int mid = (left + right) / 2;
+    // System.out.println(uw);
+    // System.out.println(left + " " + right);
+    if (works(uw.get(mid), w) && left == right) {
+      return uw.get(mid);
+    }
+    else if (works(uw.get(mid), w)) {
+      return binarySearch(uw, w, left, mid);
+    }
+    else {
+      return binarySearch(uw, w, mid+1, right);
     } 
-    System.out.println(max);
+
+  }
+  public static boolean works(int co, int[][] w) {
+    List<Integer> row1 = new ArrayList<>();
+    List<Integer> row2 = new ArrayList<>();
+    for(int i : w[0]) {
+      if(i > co) {
+        row1.add(i);
+      }
+    }
+    for(int i : w[1]) {
+      if(i > co) {
+        row2.add(i);
+      }
+    }
+    if (row1.size() % 2 == 1 || row2.size() % 2 == 1) {
+      return false;
+    }
+    for(int i = 0;i < row1.size()/2;i++) {
+      if(row1.get(2*i) != row1.get(2*i+1)) {
+        return false;
+      }
+    }
+    for(int i = 0;i < row2.size()/2;i++) {
+      if(row2.get(2*i) != row2.get(2*i+1)) {
+        return false;
+      }
+    }
+    return true;
   }
 }
