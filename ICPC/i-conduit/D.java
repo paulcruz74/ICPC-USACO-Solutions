@@ -7,13 +7,13 @@ public class D {
     Scanner in = new Scanner(System.in);
     int n = in.nextInt();
     while(n != 0) {
-      double[][][] pts = new double[n][2][2];
+      int[][][] pts = new int[n][2][2];
       for(int i = 0;i < n;i++) {
         for(int j = 0;j < 4;j++) {
-          pts[i][j/2][j%2] = in.nextDouble();
+          pts[i][j/2][j%2] = (int)(Math.round(in.nextDouble() * 10000));
         }
       }
-      double[][] slope = new double[n][2];
+      int[][] slope = new int[n][2];
       for(int i = 0;i < n;i++) {
         slope[i][0] = (pts[i][1][1] - pts[i][0][1]);
         slope[i][1] = (pts[i][1][0] - pts[i][0][0]);
@@ -23,22 +23,26 @@ public class D {
       for(int i = 0;i < n;i++){
         overlap.put(i, new HashSet<>());
       }
+      int ints = 0;
       for(int i = 0;i < n;i++){
-        for(int j = 0;j < i;j++) {
+        for(int j = 0;j < n;j++) {
           if (i == j) continue;
           // System.out.println("val: " + Math.abs(slope[i][0]*slope[j][1] - slope[j][0]*slope[i][1]));
-          if (Math.abs(slope[i][0]*slope[j][1] - slope[j][0]*slope[i][1]) < 0.0001) {
+          if (Math.abs(slope[i][0]*slope[j][1] - slope[j][0]*slope[i][1]) == 0) {
             boolean intersects = Line2D.linesIntersect(pts[i][0][0], pts[i][0][1],
                                                        pts[i][1][0], pts[i][1][1],
                                                        pts[j][0][0], pts[j][0][1],
                                                        pts[j][1][0], pts[j][1][1]);
+
             if (intersects) {
               overlap.get(i).add(j);
               overlap.get(j).add(i);
+              ints++;
             }
           }
         }
       }
+      // System.out.println("ints: " + ints);
       HashSet<Integer> visited = new HashSet<>();
       int total = 0;
       for(int i = 0; i < n;i++) {
