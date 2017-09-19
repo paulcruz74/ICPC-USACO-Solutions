@@ -1,0 +1,56 @@
+topics:
+setting up the problem/reading input/formatting output (may include other java tricks...custom comparators...useful classes (line point pq etc)
+basic graphs: bfs,dfs,representations
+greedy algorithms: MST
+brute force algorithms: the circle one for last year, figuring if its fast enough for a problem
+dijkstras:not too much on implementation...but how its used....the gas problem from last year, the ocean current problem (requiring modifying distance function)
+	how many shortest paths arrive at a given point
+text graph problems: navigating them...often a maze...zombies...etc...the worlds problem is a good one
+maxflow: various
+dp: yup
+
+each class should focus on one implementation...perhaps looking at one code example from last week
+split into two groups: one basic one advanced, basic goes over the algorithm..works through simple example...advanced goes through various
+	implementations....perhaps require submission of a thing to earn 'entry' into advanced class for a week
+assign same set of problems...maybe 3? each week based on topic...one easy medium hard
+try to have one scrimmage each week...either on TC, individual, in teams...but ensures that aside from HW, students are solving problems in contest
+	environment
+	
+perhaps try to get guest lecturers for the 'basic' class each week...past students in the era, or one 'advanced' student....one problem
+we had with the split last year is that just about every student went to the advanced class...though they may not have had any real experience 
+with the algorithm....hence the 'test' problem each week to get into the advanced section for the day....like not even bo and josh knew about
+a lot of implementation things
+
+so need some focus on better implementation as well as algorithmic integrity...the best solution is reading other solutions, but this is boring,
+	and no one will do it, which is why we need a sort of structured duvall-esque even 10 minute code review for everyone...not just basic/advanced
+	students
+
+10 classes before regionals...8 listed above as potential ideas....one day perhaps scrimmaging a couple weeks in to get an idea of teams
+that leaves a day extra for other stuff
+
+other potential ideas: send out email to mailing list over the summer of non-graduated guys who competed for regionals last year (esp top teams)
+to try to get people working before the year even starts...perhaps try to get a scrimmage...might be tough to get more than a few people...but
+at least have an idea of who is 'coming back'...post flyers around campus to get people in early...esp frosh...FREE PIZZA
+
+after regionals: team going to worlds obv has incentive to stick with it, but often the problem that we lose other guys who have no reason to 
+be there...maybe a roundtable discussion on what they think we could do to keep them there to provide continuity...focus needs to move towards
+solving worlds level problems....go through worlds problems for past 10 years, organize by relative difficulty/category...develop solutions directory
+each week have 3 problems to solve....use solvable problems next week go over solutions and implementation issues (code review)...again prepare
+students like they would be going to worlds...then for the teams that aren't going, they will be that much more prepared...perhaps organize a worlds
+simulation scrimmage amongst friendly schools (chicago, uva, md, unc) whereby teams that didn't make world finals compete on this years problems
+in a contest environment....some sort of prize? trophy? plaque? (the duke world finals simulation winner)...might provide some incentive
+
+for guys who aren't on that worlds levels yet, work much like the fall, going over basic problem solving/implementation techniques
+
+
+5 2
+00000000
+02000000
+00321100
+02000000
+00000000
+........
+........
+..LLLL..
+........
+........

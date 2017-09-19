@@ -1,0 +1,31 @@
+corner cases
+divide by zero error
+xproduct=0
+copying lines...double check EVERY change
+exit condition
+changes you made for simplicity breaking corner cases
+correct mini-maxes
+what's inside nested loops
+initial doesn't work check
+accidental overflow (including temporary from multiply before division)
+double/integer division
+multiple solutions to problem when you might not get right one(aka for dijkstras)
+explicitly calculating number of times through loop instead of while()
+lost bits off the front converting ints to strings (especially binary)
+extra bits off the front converting strings to ints (negative numbers)
+substrings off the end
+number of integer partitions is SMALL
+recursion base cases
+mods with doubles
+structs that get saved across test cases
+looping over changing data (missing something)
+treesets with common elements
+rounding doubles without adding/subtracting an epison
+comparing doubles without checking delta from one another
+long+=double
+1L before left shifting >32
+extra teadline when switching what you're reading
+don't compare arrays for equality without a custom comparator
+make comparators consistent
+print out your damn code
+.equals instead of == for Long and other object types
