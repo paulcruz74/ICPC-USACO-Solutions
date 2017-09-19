@@ -23,3 +23,4 @@ Solutions to random problems from train.usaco.org and ICPC
 - milk3
 - numtri
 - pprime
+- sprime
